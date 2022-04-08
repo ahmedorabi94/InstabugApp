@@ -6,13 +6,11 @@ import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.ahmedorabi.instabugapp.EspressoIdlingResourceRule
 import com.ahmedorabi.instabugapp.R
 import com.ahmedorabi.instabugapp.RecyclerViewItemCountAssertion.Companion.withItemCount
-import com.ahmedorabi.instabugapp.atPositionOnView
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -51,17 +49,6 @@ class MainActivityTest {
             pressKey(KeyEvent.KEYCODE_ENTER)
         )
         onView(withId(R.id.recycler_view_main)).check(withItemCount(1))
-
-    }
-
-    @Test
-    fun test_sort_words_list() {
-
-        onView(withId(R.id.sort))
-            .perform(click())
-
-        onView(withId(R.id.recycler_view_main))
-            .check(matches(atPositionOnView(0, withText("1"), R.id.wordQuantity)))
 
     }
 

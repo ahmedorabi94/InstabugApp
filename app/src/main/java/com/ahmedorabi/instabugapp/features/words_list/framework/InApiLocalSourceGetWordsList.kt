@@ -16,9 +16,8 @@ class InApiLocalSourceGetWordsList
 
 
         val wordsList = ArrayList<Word>()
-        val networkResult = apiCallHelper.getWordsList()
 
-        when (networkResult) {
+        when (val networkResult = apiCallHelper.getWordsList()) {
             is ResultWrapper.NetworkError, is ResultWrapper.Error -> {
                 val words = dbManager.getWordsList()
                 wordsList.addAll(words)

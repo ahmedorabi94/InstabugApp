@@ -30,12 +30,7 @@ class SafeApiCallHelper {
                 sb.append(line + "\n")
             }
 
-            val result = sb.toString()
-            Log.e("SafeApiCallHelper",getWords(result).toString())
-            Log.e("SafeApiCallHelper",getWords(result).size.toString())
-          //  val list: MutableList<Word> = result.parseHTML().splitBySpace().fetchWords()
-
-            ResultWrapper.Success(getWords(result))
+            ResultWrapper.Success(getWords(sb.toString()))
         } catch (e: Throwable) {
             when (e) {
                 is IOException -> {
@@ -71,7 +66,6 @@ class SafeApiCallHelper {
         text.trim().split(" ").forEach {
             if (it.isNotEmpty()){
                 val regex = "[^A-Za-z]".toRegex()
-                // regex.replace(it, " ")
                 map[regex.replace(it, "")] = map[it]?.plus(1) ?: 1
 
             }
